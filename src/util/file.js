@@ -39,15 +39,15 @@ exports.downloadImage = (data, term) => {
 
         if (data && mimetype) {
             let imageType = mimetype.match(imageTypeRegex);
-            let uploadPath = `${path}/${dir}${index}.${imageType[1]}`;
-            fs.writeFileSync(uploadPath, data);
+            let downloadPath = `${path}/${dir}${index}.${imageType[1]}`;
+            fs.writeFileSync(downloadPath, data);
 
         } else if (httpRegex.test(value)) {
             request.head(value, (err, res, body) => {
                 let imageType = res.headers['content-type'].match(imageTypeRegex);
-                let uploadPath = `${path}/${dir}${index}.${imageType[1]}`;
+                let downloadPath = `${path}/${dir}${index}.${imageType[1]}`;
 
-                request(value).pipe(fs.createWriteStream(uploadPath))
+                request(value).pipe(fs.createWriteStream(downloadPath))
                     .on('close', () => { console.log('done') });
             });
         }

@@ -9,7 +9,7 @@ const base64ToBuffer = base64 => {
 
     if (matches) {
         if (matches.length !== 3) return new Error('Invalid input string');
-        response.type = matches[1];
+        response.mimetype = matches[1];
         response.data = Buffer.from(matches[2], 'base64');
     }
 
@@ -29,16 +29,16 @@ const createDir = term => {
     return { dir, path };
 }
 
-exports.uploadImage = (data, term) => {
+exports.downloadImage = (data, term) => {
     const { dir, path } = createDir(term);
 
     data.map((value, index) => {
         let imageTypeRegex = /\/(.*?)$/;
-        let { type, data } = base64ToBuffer(value);
+        let { mimetype, data } = base64ToBuffer(value);
         let httpRegex = new RegExp("https?://[A-Za-z0-9./]+", "gm");
 
-        if (data && type) {
-            let imageType = type.match(imageTypeRegex);
+        if (data && mimetype) {
+            let imageType = mimetype.match(imageTypeRegex);
             let uploadPath = `${path}/${dir}${index}.${imageType[1]}`;
             fs.writeFileSync(uploadPath, data);
 

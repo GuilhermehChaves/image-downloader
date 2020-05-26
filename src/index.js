@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const xpath = require('./content/xpath');
-const { uploadImage } = require('./util/file');
+const { downloadImage } = require('./util/file');
 
 const term = 'dodge challenger 1964';
 
@@ -46,5 +46,5 @@ const term = 'dodge challenger 1964';
     });
 
     await browser.close();
-    uploadImage(data, term);
+    downloadImage(data, term);
 })();

@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const xpath = require('./content/xpath');
 const { downloadImage } = require('./util/file');
 
-const term = 'dodge challenger 1964';
+const term = process.argv[2].replace("_", " ");
 
 (async () => {
     const browser = await puppeteer.launch({

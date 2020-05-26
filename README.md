@@ -8,5 +8,5 @@ O objetivo do projeto é apenas para estudos, não é ser o melhor downloader de
 
 ### Funcionalidades adicionais
 
-- [ ] Poder escrever o termo a pesquisar
+- [x] Poder escrever o termo a pesquisar
 - [ ] Escolher a quantidade de imagens
